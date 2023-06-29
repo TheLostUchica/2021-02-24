@@ -53,6 +53,56 @@ public class Player {
 		return playerID + " - " + name;
 	}
 	
+	int sp;
+	int sa;
+	int t;
+	double e;
+	int team;
+	
+	double com;
+
+	public Player(Integer playerID, int sp, int sa, int t, int team) {
+		super();
+		this.playerID = playerID;
+		this.sp = sp;
+		this.sa = sa;
+		this.t = t;
+		this.team = team;
+		this.e = (sa+sp)/t;
+	}
+
+	public int getSp() {
+		return sp;
+	}
+
+	public int getSa() {
+		return sa;
+	}
+
+	public int getT() {
+		return t;
+	}
+
+	public double getE() {
+		return e;
+	}
+
+	public int getTeam() {
+		return team;
+	}
+
+	public double getCom() {
+		return com;
+	}
+
+	public void setCom(double com) {
+		this.com = com;
+	}
+	
+	
+	
+	
+	
 	
 	
 }

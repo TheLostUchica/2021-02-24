@@ -111,4 +111,27 @@ public class PremierLeagueDAO {
 		}
 	}
 	
+	public List<Player> getVertex(Match m){
+		String sql = "SELECT PlayerID AS p ,TeamID AS team ,TotalSuccessfulPassesAll AS sp, Assists AS sa, TimePlayed AS t "
+				+ "FROM actions "
+				+ "WHERE MatchID=?";
+		List<Player> result = new ArrayList<Player>();
+		Connection conn = DBConnect.getConnection();
+
+		try {
+			PreparedStatement st = conn.prepareStatement(sql);
+			st.setInt(1, m.getMatchID());
+			ResultSet res = st.executeQuery();
+			while (res.next()) {
+				Player p = new Player(res.getInt("p"), res.getInt("sp"), res.getInt("sa"), res.getInt("t"), res.getInt("team"));
+				result.add(p);
+				}
+			conn.close();
+			return result;
+			} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 }
